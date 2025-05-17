@@ -1,0 +1,20 @@
+name: 'Jira Transition on PR Merge'
+description: 'Transitions a Jira issue to QA when a PR is merged into develop by extracting the Jira link from the PR body.'
+author: 'Your Name or Org'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Extract Jira Ticket ID and Transition
+      shell: bash
+      run: ./scripts/transition.sh
+      env:
+        JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+        JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
+        JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+        JIRA_TRANSITION_ID: ${{ secrets.JIRA_TRANSITION_ID }}
+        PR_BODY: ${{ github.event.pull_request.body }}
+
+branding:
+  icon: 'repeat'
+  color: 'blue'
