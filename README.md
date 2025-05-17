@@ -11,9 +11,23 @@ Automatically transitions a Jira issue (e.g., to QA) when a pull request is merg
 | `JIRA_BASE_URL`         | Base URL of your Jira instance (e.g., https://yourcompany.atlassian.net) |
 | `JIRA_EMAIL`            | Email used to authenticate with Jira |
 | `JIRA_API_TOKEN`        | Jira API token                       |
-| `JIRA_TRANSITION_ID`    | Jira transition ID for the QA state  |
+| `JIRA_TRANSITION_ID`    | Jira transition ID for the specific state  |
 
 ---
+
+## Jira Link Format Requirement
+
+This Action extracts the Jira issue key from the pull request body by matching Jira issue URLs.
+The Jira issue link must be included in the PR body and should follow this URL pattern:
+
+```
+Implemented new validation logic.
+
+Related Jira Ticket:  
+https://yourcompany.atlassian.net/browse/PROJ-123
+
+
+```
 
 ## ✅ Usage Example
 
