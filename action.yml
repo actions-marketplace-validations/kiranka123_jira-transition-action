@@ -5,9 +5,13 @@ author: 'Your Name or Org'
 runs:
   using: 'composite'
   steps:
-    - name: Extract Jira Ticket ID and Transition
+    - name: Make script executable
+      run: chmod +x ./scripts/transitions.sh
       shell: bash
+
+    - name: Run Jira transition script
       run: ./scripts/transitions.sh
+      shell: bash
 
 branding:
   icon: 'repeat'
