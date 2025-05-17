@@ -30,4 +30,4 @@ jobs:
     if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'develop'
     runs-on: ubuntu-latest
     steps:
-      - uses: your-org/jira-transition-action@v1
+      - uses: kiranka123/jira-transition-action@v1
