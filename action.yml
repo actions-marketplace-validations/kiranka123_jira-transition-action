@@ -7,7 +7,7 @@ runs:
   steps:
     - name: Extract Jira Ticket ID and Transition
       shell: bash
-      run: ./scripts/transition.sh
+      run: ./scripts/transitions.sh
 
 branding:
   icon: 'repeat'
