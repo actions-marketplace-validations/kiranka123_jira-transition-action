@@ -30,18 +30,24 @@ https://yourcompany.atlassian.net/browse/PROJ-123
 ```
 
 ## ✅ Usage Example
+Add this Action in your workflow triggered on PR merges to `develop`. Example:
 
 ```yaml
-name: Transition Jira Issue to QA
+name: Jira Transition on PR Merge
 
 on:
   pull_request:
-    types:
-      - closed
+    types: [closed]
 
 jobs:
-  transition:
+  transition-jira:
     if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'develop'
     runs-on: ubuntu-latest
     steps:
-      - uses: kiranka123/jira-transition-action@v1
+      - uses: kiranka123/jira-transition-action@v2
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+          JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+          JIRA_TRANSITION_ID: ${{ secrets.JIRA_TRANSITION_ID }}
